@@ -1,0 +1,31 @@
+import unittest
+from manhattan_zoo import add_animal, remove_animal
+
+class TestManhattanZoo(unittest.TestCase):
+
+    def test_add_new_animal(self):
+        animals = ["Lion", "Elephant"]
+        updated = add_animal(animals.copy(), "Giraffe")
+        self.assertIn("Giraffe", updated)
+        self.assertEqual(len(updated), 3)
+
+    def test_add_existing_animal(self):
+        animals = ["Lion", "Elephant"]
+        updated = add_animal(animals.copy(), "Lion")
+        self.assertEqual(updated.count("Lion"), 1)
+        self.assertEqual(len(updated), 2)
+
+    def test_remove_existing_animal(self):
+        animals = ["Lion", "Penguin", "Elephant"]
+        updated = remove_animal(animals.copy(), "Penguin")
+        self.assertNotIn("Penguin", updated)
+        self.assertEqual(len(updated), 2)
+
+    def test_remove_nonexistent_animal(self):
+        animals = ["Lion", "Elephant"]
+        updated = remove_animal(animals.copy(), "Zebra")
+        self.assertEqual(updated, animals)  # Should not change
+        self.assertNotIn("Zebra", updated)
+
+if __name__ == '__main__':
+    unittest.main()
