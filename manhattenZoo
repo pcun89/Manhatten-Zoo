@@ -1,0 +1,38 @@
+# manhattan_zoo.py
+
+def list_animals():
+    animals = ["Lion", "Giraffe", "Elephant", "Penguin", "Zebra"]
+    print("Animals currently in the Manhattan Zoo:")
+    for animal in animals:
+        print(f"- {animal}")
+
+def add_animal(animals, new_animal):
+    if new_animal not in animals:
+        animals.append(new_animal)
+        print(f"{new_animal} has been added to the zoo.")
+    else:
+        print(f"{new_animal} is already in the zoo.")
+    return animals
+
+def remove_animal(animals, target_animal):
+    if target_animal in animals:
+        animals.remove(target_animal)
+        print(f"{target_animal} has been removed from the zoo.")
+    else:
+        print(f"{target_animal} not found in the zoo.")
+    return animals
+
+def main():
+    zoo_animals = ["Lion", "Giraffe", "Elephant"]
+    list_animals()
+    
+    # Simulate adding and removing animals
+    zoo_animals = add_animal(zoo_animals, "Penguin")
+    zoo_animals = remove_animal(zoo_animals, "Giraffe")
+
+    print("\nFinal list of animals:")
+    for animal in zoo_animals:
+        print(f"- {animal}")
+
+if __name__ == "__main__":
+    main()
